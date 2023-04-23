@@ -8,6 +8,7 @@ import GetMarketplace from '../../components/Home/GetMarketplace'
 import pic from '../../assets/5438785.jpg'
 import AuthSection from '../../components/Home/AuthSection';
 import PlayerSelectionSection from '../../components/SquadSelection/playeSelectionSection';
+import "./HomePage.css"
 
 const HomePage = () => {
     const [value, setValue] = React.useState('1');
@@ -17,15 +18,11 @@ const HomePage = () => {
     };
     return (
         <Stack direction={'column'} display='flex'>
-            <Card
-                elevation={0}>
-                <CardMedia
-                    component="img"
-                    height="400"
-                    image={pic}
-                    alt="Paella dish"
-                />
-            </Card>
+            <div className='home-card'>
+                <div className='layout-wraper'>
+                    <div className='image-container'></div>
+                </div>
+            </div>
             <Container maxWidth="lg" sx={{ mt: -6 }}>
 
                 <TabContext value={value}
@@ -35,8 +32,8 @@ const HomePage = () => {
                         TabIndicatorProps={{ sx: { display: 'none' } }}
 
                         sx={{
-                            "& button": { borderRadius: '5px 5px 0px 0px ', backgroundColor: '#d97f1f', marginX: 0.5, color: 'black', fontWeight: 700, textTransform: 'none', },
-                            "& button.Mui-selected": { backgroundColor: 'white', color: 'black', fontWeight: 700 },
+                            "& button": { borderRadius: '5px 5px 0px 0px ', backgroundColor: '#ff8d00', marginX: 0.5, color: 'rgb(12, 12, 73)', fontWeight: 700, textTransform: 'none', },
+                            "& button.Mui-selected": { backgroundColor: 'white', color: 'rgb(12, 12, 73)', fontWeight: 700 },
 
 
                         }}>

@@ -4,8 +4,14 @@
 
 .footer {
     width: 100%;
-    padding-block: 1.5rem;
     position: relative;
+    padding: 10rem 4rem;
+    background: #004b8c;
+    background-image: url("../../assets/footer.png");
+    background-position: bottom;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+
 
 }
 
