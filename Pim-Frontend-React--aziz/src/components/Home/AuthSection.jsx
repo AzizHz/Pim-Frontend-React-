@@ -52,6 +52,7 @@ const AuthSection = () => {
 
             })
             .then((res) => {
+                setUser(name)
                 if (res.status === 200) {
                     console.log(res.data.nickname)
                     setUser(res.body.nikname)

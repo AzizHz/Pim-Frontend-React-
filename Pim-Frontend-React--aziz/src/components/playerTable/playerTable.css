@@ -1,0 +1,39 @@
+.Modal-image-section {
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 180px, white 320px), url("../../assets/pattern2.png"), linear-gradient(to right, rgba(255, 181, 101, 1), rgba(255, 85, 0, 1));
+    background-position: 0px 0px, right -84px top -493px, 0px 0px;
+    background-size: auto, 653px 925px, auto;
+    background-repeat: no-repeat;
+    height: 400px;
+    padding: 10%;
+    width: 100%;
+    border-radius: 16px 16px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.player-image-container {
+    width: 30%;
+
+}
+
+.player-image-container h4 {
+    font-weight: 700;
+    color: rgb(12, 12, 73);
+    font-size: large;
+    opacity: 1;
+}
+
+.Modal-image-section h4 {
+    font-weight: 700;
+    color: rgb(12, 12, 73);
+    font-size: large;
+    opacity: 1;
+}
+
+.player-image-container p {
+    font-weight: lighter;
+    color: rgb(12, 12, 73);
+
+}

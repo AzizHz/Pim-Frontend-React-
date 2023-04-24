@@ -22,7 +22,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { TiInfoLarge } from 'react-icons/ti'
-import { Modal } from '@mui/material';
+import { Modal, Stack } from '@mui/material';
+import "./playerTable.css"
+import PlayerModal from '../Modal/Modal';
 
 
 
@@ -171,11 +173,12 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '50%',
     bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
+    border: 'none',
+    borderRadius: '16px',
+    boxShadow: 2,
+
 };
 
 
@@ -310,7 +313,8 @@ export default function PlayerTable(props) {
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
     return (
-        <Box sx={{ width: '100%', pt: 0 }}>
+        <Box sx={{ width: '100%', pt: 0 }}
+        >
             <Paper sx={{ width: '100%', mb: 2, pt: 0 }}>
                 <EnhancedTableToolbar header={header} />
                 <TableContainer>
@@ -347,28 +351,7 @@ export default function PlayerTable(props) {
                                             sx={{ cursor: 'pointer' }}
                                         >
                                             <TableCell padding="checkbox">
-                                                <IconButton color="primary" onClick={handleOpen}>
-                                                    <TiInfoLarge />
-                                                </IconButton>
-                                                <Modal
-                                                    sx={{ backgroundColor: 'transparent' }}
-                                                    open={open}
-
-                                                    onClose={handleClose}
-                                                    aria-labelledby="modal-modal-title"
-                                                    aria-describedby="modal-modal-description"
-                                                >
-                                                    <Box sx={style}>
-                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                            {row.PLAYER_NAME}
-                                                        </Typography>
-                                                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                                                        </Typography>
-                                                    </Box>
-                                                </Modal>
-
-
+                                                <PlayerModal row={row} header={header} />
                                             </TableCell>
                                             <TableCell
                                                 component="th"
@@ -376,6 +359,8 @@ export default function PlayerTable(props) {
                                                 scope="row"
                                                 padding="none"
                                             >
+
+
                                                 {row.PLAYER_NAME}
                                             </TableCell>
                                             <TableCell align="right">{row.NBA_FANTASY_PTS * 6}</TableCell>
