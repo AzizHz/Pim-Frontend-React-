@@ -99,16 +99,14 @@ const AuthSection = () => {
                     </Button>
                 </Box>
             </Modal>
-            <Box height={'150px'} width={'100%'} sx={{ background: '#004b8c' }}>
+            <Box height={'150px'} width={'100%'} sx={{ background: 'linear-gradient(170deg, rgba(255, 181, 101, 1) 4%, rgba(255, 85, 0, 1) 90%)' }}>
                 <Stack direction={'row'} alignItems={'center'} height={'100%'} justifyContent={'space-around'} >
                     <img src={pic} style={{ height: '100px' }} alt='logo' height={'120px'} />
                     <Stack direction={'column'} spacing={2} alignItems={'center'} maxWidth={'60%'}>
-                        <Typography variant='h6' fontWeight={700} color='#145365'> Register to Play Alley-Oop</Typography>
-                        <Typography variant='body2' fontWeight={500} color='white' maxWidth={'80%'}> With over 9 million players, Fantasy Premier League is the biggest Fantasy Football game in the world. It’s FREE to play and you can win great prizes!</Typography>
+                        <Typography variant='h6' fontWeight={700} color='rgb(12, 12, 73)'> Register to Play Alley-Oop</Typography>
+                        <Typography variant='body2' fontWeight={500} color='white' maxWidth={'80%'}> With over 9 million players, Alley-Oop is the biggest Fantasy Basketball game in the world. It’s FREE to play and you can win great prizes!</Typography>
                     </Stack>
-                    <Button variant="contained">
-                        Sign Up Now
-                    </Button>
+                    <Box width={30}></Box>
 
                 </Stack>
 

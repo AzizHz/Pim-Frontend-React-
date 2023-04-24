@@ -8,12 +8,12 @@ window.web3 = new Web3(window.web3.currentProvider)
 
 const getEtheriumContract = async () => {
   const connectedAccount = getGlobalState('connectedAccount')
- 
+
   if (connectedAccount) {
     const web3 = window.web3
     const networkId = await web3.eth.net.getId()
     const networkData = abi.networks[networkId]
- 
+
     if (networkData) {
       const contract = new web3.eth.Contract(abi.abi, networkData.address)
       return contract
@@ -23,7 +23,7 @@ const getEtheriumContract = async () => {
   } else {
     return getGlobalState('contract')
   }
- }
+}
 
 const connectWallet = async () => {
   try {
@@ -96,11 +96,11 @@ const mintNFT = async ({ title, description, metadataURI, price }) => {
     const account = getGlobalState('connectedAccount')
     const mintPrice = window.web3.utils.toWei('0.01', 'ether')
     console.log('waaa maallem')
-    
+
     await contract.methods
-    .payToMint(title, description, metadataURI, price)
-    .send({ from: account, value: mintPrice })
-  
+      .payToMint(title, description, metadataURI, price)
+      .send({ from: account, value: mintPrice })
+
     return true
   } catch (error) {
     reportError(error)
@@ -147,8 +147,8 @@ export {
   buyNFT,
   updateNFT,
   isWallectConnected,
+  structuredNfts,
 }
-     
 
 
-  
+

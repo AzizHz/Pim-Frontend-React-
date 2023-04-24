@@ -9,6 +9,7 @@ import pic from '../../assets/5438785.jpg'
 import AuthSection from '../../components/Home/AuthSection';
 import PlayerSelectionSection from '../../components/SquadSelection/playeSelectionSection';
 import "./HomePage.css"
+import LeaderBoardSection from '../../components/LeaderBoardSection/LeaderBoardSection';
 
 const HomePage = () => {
     const [value, setValue] = React.useState('1');
@@ -39,14 +40,14 @@ const HomePage = () => {
                         }}>
                         <Tab label="Home" value="1" />
                         <Tab label="Squad Selection" value="2" />
-                        <Tab label="Scout" value="3" />
+                        <Tab label="Leader Board" value="3" />
                         <Tab label="MarketPlace" value="4" />
 
                     </TabList>
 
                     <TabPanel value="1"><AuthSection /></TabPanel>
                     <TabPanel value="2"><PlayerSelectionSection /></TabPanel>
-                    <TabPanel value="3">Item Three</TabPanel>
+                    <TabPanel value="3"><LeaderBoardSection /></TabPanel>
                     <TabPanel value="4"><GetMarketplace />  </TabPanel>
                 </TabContext>
 

@@ -5,7 +5,7 @@ const { setGlobalState, useGlobalState, getGlobalState } = createGlobalState({
   updateModal: 'scale-0',
   showModal: 'scale-100',
   alert: { show: false, msg: '', color: '' },
-  loading: { show: false, msg: '' }, 
+  loading: { show: false, msg: '' },
   connectedAccount: '',
   nft: null,
   nfts: [],
@@ -15,7 +15,7 @@ const { setGlobalState, useGlobalState, getGlobalState } = createGlobalState({
 
 const setAlert = (msg, color = 'green') => {
   setGlobalState('loading', false)
-  setGlobalState('alert', { show: true, msg, color })
+  setGlobalState('alert', { show: true, msg, color }) //set true
   setTimeout(() => {
     setGlobalState('alert', { show: false, msg: '', color })
   }, 6000)

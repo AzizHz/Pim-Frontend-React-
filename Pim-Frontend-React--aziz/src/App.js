@@ -24,7 +24,7 @@ const theme = createTheme({
 });
 
 function App() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState("Aziz");
 
 
   return (

@@ -82,7 +82,9 @@ const PlayerSelectionSection = () => {
 
     }, [Data, Center, Guard, Forward, disabled, selectedGuard, selectedForward, selectedCenter, playerSelecredCount]);
 
-
+    const handlePickTeam = async () => {
+        axios.post(`http://localhost:3001/user/AddPlayerToTeam/644634a73d0905ec5e8d65c4/team/${selectedGuard[0]}/${selectedGuard[1]}/${selectedForward[0]}/${selectedForward[1]}/${selectedCenter[0]}`)
+    }
 
 
 
@@ -137,7 +139,7 @@ const PlayerSelectionSection = () => {
 
 
                         </div>
-                        <Button variant='contained' disabled={disabled} onClick={handleOpen}>  Confirme Squad</Button>
+                        <Button variant='contained' disabled={disabled} onClick={handlePickTeam}>  Confirme Squad</Button>
                     </Stack>
                 </Card>
 

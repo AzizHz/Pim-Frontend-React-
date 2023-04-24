@@ -22,6 +22,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { TiInfoLarge } from 'react-icons/ti'
+import { Modal } from '@mui/material';
 
 
 
@@ -165,6 +166,17 @@ function EnhancedTableToolbar(props) {
         </Toolbar>
     );
 }
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
 
 
@@ -180,7 +192,9 @@ export default function PlayerTable(props) {
     const [rowsPerPage, setRowsPerPage] = React.useState(DEFAULT_ROWS_PER_PAGE);
     const [paddingHeight, setPaddingHeight] = React.useState(0);
 
-
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const handleClick = (event, name) => {
         event.preventDefault();
@@ -316,10 +330,12 @@ export default function PlayerTable(props) {
                         <TableBody>
                             {visibleRows
                                 ? visibleRows.map((row, index) => {
+
                                     const isItemSelected = isSelected(row.PLAYER_ID);
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
+
                                         <TableRow
                                             hover
                                             onClick={(event) => handleClick(event, row.PLAYER_ID)}
@@ -331,9 +347,26 @@ export default function PlayerTable(props) {
                                             sx={{ cursor: 'pointer' }}
                                         >
                                             <TableCell padding="checkbox">
-                                                <IconButton color="primary">
+                                                <IconButton color="primary" onClick={handleOpen}>
                                                     <TiInfoLarge />
                                                 </IconButton>
+                                                <Modal
+                                                    sx={{ backgroundColor: 'transparent' }}
+                                                    open={open}
+
+                                                    onClose={handleClose}
+                                                    aria-labelledby="modal-modal-title"
+                                                    aria-describedby="modal-modal-description"
+                                                >
+                                                    <Box sx={style}>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            {row.PLAYER_NAME}
+                                                        </Typography>
+                                                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                                        </Typography>
+                                                    </Box>
+                                                </Modal>
 
 
                                             </TableCell>
