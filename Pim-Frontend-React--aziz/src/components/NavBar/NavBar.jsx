@@ -15,11 +15,17 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import logo from '../../assets/logo-nba.png'
+import { Avatar, Chip } from '@mui/material';
+import { UserContext } from '../../App';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Contact'];
 
 function NavBar(props) {
+
+    const { user, setUser } = React.useContext(UserContext);
+
+
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -72,8 +78,8 @@ function NavBar(props) {
 
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: '#d97f1f' }}
                     >
-                        <img src={logo} alt='logo' height={'50px'}  style={{ flexGrow: 1, height:"50px" }}
- />
+                        <img src={logo} alt='logo' height={'50px'} style={{ flexGrow: 1, height: "50px" }}
+                        />
 
                     </Box>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -86,6 +92,11 @@ function NavBar(props) {
                             </Button>
                         ))}
                     </Box>
+                    <Chip
+                        avatar={<Avatar alt={user} src="/static/images/avatar/1.jpg" />}
+                        label={user}
+                        variant="outlined"
+                    />
                 </Toolbar>
             </AppBar>
             <Box component="nav">

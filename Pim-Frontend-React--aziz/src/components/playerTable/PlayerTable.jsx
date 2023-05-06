@@ -22,6 +22,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { TiInfoLarge } from 'react-icons/ti'
+import { Modal, Stack } from '@mui/material';
+import "./playerTable.css"
+import PlayerModal from '../Modal/Modal';
 
 
 
@@ -165,6 +168,18 @@ function EnhancedTableToolbar(props) {
         </Toolbar>
     );
 }
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '50%',
+    bgcolor: 'background.paper',
+    border: 'none',
+    borderRadius: '16px',
+    boxShadow: 2,
+
+};
 
 
 
@@ -180,7 +195,9 @@ export default function PlayerTable(props) {
     const [rowsPerPage, setRowsPerPage] = React.useState(DEFAULT_ROWS_PER_PAGE);
     const [paddingHeight, setPaddingHeight] = React.useState(0);
 
-
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const handleClick = (event, name) => {
         event.preventDefault();
@@ -296,7 +313,8 @@ export default function PlayerTable(props) {
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
     return (
-        <Box sx={{ width: '100%', pt: 0 }}>
+        <Box sx={{ width: '100%', pt: 0 }}
+        >
             <Paper sx={{ width: '100%', mb: 2, pt: 0 }}>
                 <EnhancedTableToolbar header={header} />
                 <TableContainer>
@@ -316,10 +334,12 @@ export default function PlayerTable(props) {
                         <TableBody>
                             {visibleRows
                                 ? visibleRows.map((row, index) => {
+
                                     const isItemSelected = isSelected(row.PLAYER_ID);
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
+
                                         <TableRow
                                             hover
                                             onClick={(event) => handleClick(event, row.PLAYER_ID)}
@@ -331,11 +351,7 @@ export default function PlayerTable(props) {
                                             sx={{ cursor: 'pointer' }}
                                         >
                                             <TableCell padding="checkbox">
-                                                <IconButton color="primary">
-                                                    <TiInfoLarge />
-                                                </IconButton>
-
-
+                                                <PlayerModal row={row} header={header} />
                                             </TableCell>
                                             <TableCell
                                                 component="th"
@@ -343,6 +359,8 @@ export default function PlayerTable(props) {
                                                 scope="row"
                                                 padding="none"
                                             >
+
+
                                                 {row.PLAYER_NAME}
                                             </TableCell>
                                             <TableCell align="right">{row.NBA_FANTASY_PTS * 6}</TableCell>

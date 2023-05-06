@@ -48,22 +48,28 @@ const PlayerSelectionSection = () => {
     };
 
 
+    const fetchData = async () => {
+        const result = await axios('http://localhost:3001/Data');
+        setData(result.data);
+        setCenter(result.data.players.filter(player => player.POSITION === 'C' || player.POSITION === 'C-F' || player.POSITION === 'F-C'))
+        setGuard(result.data.players.filter(player => player.POSITION === 'G' || player.POSITION === 'G-F' || player.POSITION === 'F-G'))
+        setForward(result.data.players.filter(player => player.POSITION === 'F' || player.POSITION === 'G-F' || player.POSITION === 'F-G' || player.POSITION === 'C-F' || player.POSITION === 'F-C'))
+    };
 
+    useEffect(() => {
+        fetchData()
 
+        const intervalId = setInterval(fetchData, 5 * 60 * 60 * 1000);
+
+        // cleanup function to clear the interval when the component unmounts
+        return () => clearInterval(intervalId);
+
+    }, [])
 
 
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios('http://localhost:3001/Data');
-            setData(result.data);
-            setCenter(result.data.players.filter(player => player.POSITION === 'C' || player.POSITION === 'C-F' || player.POSITION === 'F-C'))
-            setGuard(result.data.players.filter(player => player.POSITION === 'G' || player.POSITION === 'G-F' || player.POSITION === 'F-G'))
-            setForward(result.data.players.filter(player => player.POSITION === 'F' || player.POSITION === 'G-F' || player.POSITION === 'F-G' || player.POSITION === 'C-F' || player.POSITION === 'F-C'))
-        };
 
-        // Call the API initially
-        fetchData();
-
+        console.log("Data changed:", Data);
         if (selectedGuard && selectedForward && selectedCenter) {
             if (selectedGuard.length + selectedCenter.length + selectedForward.length === 5) {
                 setDisabled(false)
@@ -73,17 +79,12 @@ const PlayerSelectionSection = () => {
             }
         }
         setPlayerSelecredCount(selectedGuard.length + selectedCenter.length + selectedForward.length)
-        // Call the API every 5 minutes
-        const interval = setInterval(() => {
-            fetchData();
 
-        }, 60 * 60 * 1000);
+    }, [Data, Center, Guard, Forward, disabled, selectedGuard, selectedForward, selectedCenter, playerSelecredCount]);
 
-        // Clear the interval when the component is unmounted
-        return () => clearInterval(interval);
-    }, [Center, Guard, Forward, disabled, selectedGuard, selectedForward, selectedCenter, playerSelecredCount]);
-
-
+    const handlePickTeam = async () => {
+        axios.post(`http://localhost:3001/user/AddPlayerToTeam/644634a73d0905ec5e8d65c4/team/${selectedGuard[0]}/${selectedGuard[1]}/${selectedForward[0]}/${selectedForward[1]}/${selectedCenter[0]}`)
+    }
 
 
 
@@ -138,7 +139,7 @@ const PlayerSelectionSection = () => {
 
 
                         </div>
-                        <Button variant='contained' disabled={disabled} onClick={handleOpen}>  Confirme Squad</Button>
+                        <Button variant='contained' disabled={disabled} onClick={handlePickTeam}>  Confirme Squad</Button>
                     </Stack>
                 </Card>
 
