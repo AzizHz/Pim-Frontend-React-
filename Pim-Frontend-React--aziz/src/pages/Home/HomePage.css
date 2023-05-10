@@ -1,0 +1,26 @@
+.home-card {
+    width: 100%;
+    height: 250px;
+    background-image: url('../../assets/pattern2.png'), url('../../assets/pattern2.png'), linear-gradient(170deg, rgba(255, 181, 101, 1) 4%, rgba(255, 85, 0, 1) 90%);
+    background-position: 50% -460px, right -73px bottom -24px, 0px center;
+    background-size: 618px 873px, 618px 873px, auto;
+    background-repeat: no-repeat;
+}
+
+.layout-wraper {
+    max-width: 1220px;
+    margin: 0px auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    height: 100%;
+}
+
+.image-container {
+    background-size: 360px;
+    flex: 1 1 0%;
+    background-image: url("../../assets/players.png");
+    background-repeat: no-repeat;
+    background-position: right 2rem bottom;
+
+}

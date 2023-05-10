@@ -1,0 +1,15 @@
+.field-container {
+    background-image: url('../../assets/field.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: calc(500px*1.28);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    gap: 75px;
+}
